@@ -1,7 +1,7 @@
 # docker-compose.yml
 version: "3.8"
 services:
-  postgres:
+  postgres-app:
     image: postgres
     hostname: postgres
     environment:
@@ -10,3 +10,25 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - 5432:5432
+
+  camunda-app:
+    build: ./com.alanda.camunda.services
+    hostname: services
+    env_file: ./com.alanda.camunda.services/.env
+    depends_on:
+      - postgres-app
+    ports:
+      - 4000:4000
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-app:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+
+  process-app:
+    build: ./com.alanda.process.services
+    hostname: services
+    env_file: ./com.alanda.process.services/.env
+    depends_on:
+      - camunda-app
+    ports:
+      - 8080:8080
