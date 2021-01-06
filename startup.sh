@@ -16,4 +16,4 @@ cd ./com.alanda.process.services
 ./mvnw -f pom.xml clean install -U
 
 cd ..
-docker-compose up --build --force-recreate
+docker-compose --env-file ./config/.env.dev up --build --force-recreate

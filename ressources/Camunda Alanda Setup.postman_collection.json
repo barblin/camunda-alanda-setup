@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "a76ff7ea-1dac-43d6-99b3-d00b299f0fa6",
+		"name": "Camunda Alanda Setup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Upload BPMN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "process.bpmn",
+							"type": "file",
+							"src": "/D:/Work/Alanda/camunda-alanda-setup/ressources/payment.bpmn"
+						},
+						{
+							"key": "deployment-name",
+							"value": "Alanda Deployment",
+							"type": "text"
+						},
+						{
+							"key": "enable-duplicate-filtering",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "deploy-changed-only",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "tenantId",
+							"value": "barblin",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/engine-rest/deployment/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"engine-rest",
+						"deployment",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Process",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"variables\": {\r\n    \"amount\":{\"value\":\"100\",\"type\":\"String\"}\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/engine-rest/process-definition/key/payment-retrieval/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"engine-rest",
+						"process-definition",
+						"key",
+						"payment-retrieval",
+						"start"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
