@@ -1,19 +1,20 @@
 # docker-compose.yml
 version: "3.8"
+
 services:
   postgres-app:
     image: postgres
-    hostname: postgres
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+      - ${POSTGRES_PORT}
 
   camunda-app:
+    restart: always
     build: ./com.alanda.camunda.services
-    hostname: services
+    image: camunda-app
     env_file: ./com.alanda.camunda.services/.env
     depends_on:
       - postgres-app
@@ -25,10 +26,20 @@ services:
       - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
 
   process-app:
+    restart: always
     build: ./com.alanda.process.services
-    hostname: services
+    image: process-app
+    hostname: process-app
     env_file: ./com.alanda.process.services/.env
-    depends_on:
-      - camunda-app
     ports:
       - ${PROCESS_APP_PORT}:${PROCESS_APP_PORT}
+    environment:
+      - PROCESS_MANAGER_CAMUNDA_API=${PROCESS_MANAGER_CAMUNDA_API}
+      - PROCESS_MANAGER_CAMUNDA_UPLOAD=${PROCESS_MANAGER_CAMUNDA_UPLOAD}
+      - PROCESS_MANAGER_CAMUNDA_DUPLICATE_FILTERING=${PROCESS_MANAGER_CAMUNDA_DUPLICATE_FILTERING}
+    depends_on:
+      - camunda-app
+    links:
+      - camunda-app
+    volumes:
+      - ./ressources:/ressources
