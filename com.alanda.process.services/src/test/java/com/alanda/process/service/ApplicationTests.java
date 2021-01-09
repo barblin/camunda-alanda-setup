@@ -1,4 +1,4 @@
-package com.alanda.process.services;
+package com.alanda.process.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
