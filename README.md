@@ -1,5 +1,10 @@
 # camunda-alanda-setup
 
+Make sure that you have execution rights for all folders and subfolders - to make sure, execute following command
+
+Pls install openjdk with Java version 11 and above
+
+
 All the necessary components are contained within this project. 
 
 Before you start, please make sure that docker with docker compose is setup on your unix machine.

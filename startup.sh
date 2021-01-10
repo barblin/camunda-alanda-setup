@@ -1,8 +1,10 @@
 #!/bin/bash
 # Startup script
 
-read -p "Enter JAVA_HOME [C://Program\ Files//Java//jdk-11]: " java_input
-java=${java_input:-C://Program\ Files//Java//jdk-11}
+apt-get install curl
+
+read -p "Enter JAVA_HOME [/usr/lib/jvm/java-11-openjdk-amd64]: " java_input
+java=${java_input:-/usr/lib/jvm/java-11-openjdk-amd64}
 echo $java
 
 export JAVA_HOME=$java
