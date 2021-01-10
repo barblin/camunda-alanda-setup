@@ -4,6 +4,7 @@
     <bpmn:startEvent id="StartEvent_1" name="Payment Retrieval Requested">
       <bpmn:outgoing>SequenceFlow_0fn07fk</bpmn:outgoing>
     </bpmn:startEvent>
+    <bpmn:serviceTask id="javaService" camunda:class="com.alanda.camunda.services.processes.delegates.ProcessInvocationDelegate" />
     <bpmn:serviceTask id="Task_19pt1nu" name="Charge Credit Card" camunda:type="external" camunda:topic="charge-card">
       <bpmn:incoming>SequenceFlow_187qbq7</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_0ilu8bp</bpmn:incoming>
@@ -13,7 +14,7 @@
       <bpmn:incoming>SequenceFlow_1axd8hr</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1axd8hr" sourceRef="Task_19pt1nu" targetRef="EndEvent_1oyw02k" />
-    <bpmn:sequenceFlow id="SequenceFlow_0fn07fk" sourceRef="StartEvent_1" targetRef="ExclusiveGateway_0r349mg" />
+    <bpmn:sequenceFlow id="SequenceFlow_0fn07fk" sourceRef="StartEvent_1" targetRef="javaService" />
     <bpmn:sequenceFlow id="SequenceFlow_0foxe2y" sourceRef="Task_1j42goo" targetRef="ExclusiveGateway_17ik05z" />
     <bpmn:exclusiveGateway id="ExclusiveGateway_0r349mg" name="Payment Amount?">
       <bpmn:incoming>SequenceFlow_0fn07fk</bpmn:incoming>
