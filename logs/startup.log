@@ -1,0 +1,596 @@
+Creating network "camunda-alanda-setup_default" with the default driver
+Building camunda-app
+Step 1/4 : FROM openjdk:11
+ ---> ecef10cd1bef
+Step 2/4 : ARG JAR_FILE=target/*.jar
+ ---> Using cache
+ ---> 1fac598e7b94
+Step 3/4 : COPY ${JAR_FILE} app.jar
+ ---> 811fb8071c43
+Step 4/4 : ENTRYPOINT ["java","-jar","/app.jar"]
+ ---> Running in 04bf977f2d99
+Removing intermediate container 04bf977f2d99
+ ---> cc02a7caf4f5
+
+Successfully built cc02a7caf4f5
+Successfully tagged camunda-app:latest
+Building process-app
+Step 1/4 : FROM openjdk:11
+ ---> ecef10cd1bef
+Step 2/4 : ARG JAR_FILE=target/*.jar
+ ---> Using cache
+ ---> 1fac598e7b94
+Step 3/4 : COPY ${JAR_FILE} app.jar
+ ---> 6dccfa23cb89
+Step 4/4 : ENTRYPOINT ["java","-jar","/app.jar"]
+ ---> Running in 554612a3ba70
+Removing intermediate container 554612a3ba70
+ ---> 19be32d33357
+
+Successfully built 19be32d33357
+Successfully tagged process-app:latest
+Creating camunda-alanda-setup_postgres-app_1 ... 
+[1A[2KCreating camunda-alanda-setup_postgres-app_1 ... [32mdone[0m[1BCreating camunda-alanda-setup_camunda-app_1  ... 
+[1A[2KCreating camunda-alanda-setup_camunda-app_1  ... [32mdone[0m[1BCreating camunda-alanda-setup_process-app_1  ... 
+[1A[2KCreating camunda-alanda-setup_process-app_1  ... [32mdone[0m[1BAttaching to camunda-alanda-setup_postgres-app_1, camunda-alanda-setup_camunda-app_1, camunda-alanda-setup_process-app_1
+[33mpostgres-app_1  |[0m The files belonging to this database system will be owned by user "postgres".
+[33mpostgres-app_1  |[0m This user must also own the server process.
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m The database cluster will be initialized with locale "en_US.utf8".
+[33mpostgres-app_1  |[0m The default database encoding has accordingly been set to "UTF8".
+[33mpostgres-app_1  |[0m The default text search configuration will be set to "english".
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m Data page checksums are disabled.
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m fixing permissions on existing directory /var/lib/postgresql/data ... ok
+[33mpostgres-app_1  |[0m creating subdirectories ... ok
+[33mpostgres-app_1  |[0m selecting dynamic shared memory implementation ... posix
+[33mpostgres-app_1  |[0m selecting default max_connections ... 100
+[33mpostgres-app_1  |[0m selecting default shared_buffers ... 128MB
+[33mpostgres-app_1  |[0m selecting default time zone ... Etc/UTC
+[33mpostgres-app_1  |[0m creating configuration files ... ok
+[33mpostgres-app_1  |[0m running bootstrap script ... ok
+[33mpostgres-app_1  |[0m performing post-bootstrap initialization ... ok
+[33mpostgres-app_1  |[0m syncing data to disk ... ok
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m Success. You can now start the database server using:
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m     pg_ctl -D /var/lib/postgresql/data -l logfile start
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m initdb: warning: enabling "trust" authentication for local connections
+[33mpostgres-app_1  |[0m You can change this by editing pg_hba.conf or using the option -A, or
+[33mpostgres-app_1  |[0m --auth-local and --auth-host, the next time you run initdb.
+[33mpostgres-app_1  |[0m waiting for server to start....2021-01-10 23:11:46.269 UTC [46] LOG:  starting PostgreSQL 13.1 (Debian 13.1-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:46.304 UTC [46] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:46.513 UTC [47] LOG:  database system was shut down at 2021-01-10 23:11:42 UTC
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:46.607 UTC [46] LOG:  database system is ready to accept connections
+[33mpostgres-app_1  |[0m  done
+[33mpostgres-app_1  |[0m server started
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:46.743 UTC [46] LOG:  received fast shutdown request
+[33mpostgres-app_1  |[0m waiting for server to shut down....2021-01-10 23:11:47.381 UTC [46] LOG:  aborting any active transactions
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:47.382 UTC [46] LOG:  background worker "logical replication launcher" (PID 53) exited with exit code 1
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:47.382 UTC [48] LOG:  shutting down
+[33mpostgres-app_1  |[0m ..2021-01-10 23:11:48.899 UTC [46] LOG:  database system is shut down
+[33mpostgres-app_1  |[0m  done
+[33mpostgres-app_1  |[0m server stopped
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m PostgreSQL init process complete; ready for start up.
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:49.160 UTC [1] LOG:  starting PostgreSQL 13.1 (Debian 13.1-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:49.481 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:49.481 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:49.682 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:49.825 UTC [65] LOG:  database system was shut down at 2021-01-10 23:11:48 UTC
+[33mpostgres-app_1  |[0m 2021-01-10 23:11:49.852 UTC [1] LOG:  database system is ready to accept connections
+[36mcamunda-app_1   |[0m 
+[36mcamunda-app_1   |[0m  ____                                 _         ____  ____  __  __
+[36mcamunda-app_1   |[0m / ___| __ _ _ __ ___  _   _ _ __   __| | __ _  | __ )|  _ \|  \/  |
+[36mcamunda-app_1   |[0m | |   / _` | '_ ` _ \| | | | '_ \ / _` |/ _` | |  _ \| |_) | |\/| |
+[36mcamunda-app_1   |[0m | |__| (_| | | | | | | |_| | | | | (_| | (_| | | |_) |  __/| |  | |
+[36mcamunda-app_1   |[0m \____/\__,_|_| |_| |_|\__,_|_| |_|\__,_|\__,_| |____/|_|   |_|  |_|
+[36mcamunda-app_1   |[0m 
+[36mcamunda-app_1   |[0m   Spring-Boot:  (v2.4.1)
+[36mcamunda-app_1   |[0m   Camunda BPM: (v7.14.0)
+[36mcamunda-app_1   |[0m   Camunda BPM Spring Boot Starter: (v7.14.0)
+[36mcamunda-app_1   |[0m 
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:47.795  INFO 1 --- [           main] c.a.c.services.ServicesApplication       : Starting ServicesApplication v0.0.1-SNAPSHOT using Java 11.0.9.1 on c7c5eac9a8ab with PID 1 (/app.jar started by root in /)
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:47.798  INFO 1 --- [           main] c.a.c.services.ServicesApplication       : No active profile set, falling back to default profiles: default
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:48.773  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:48.791  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:49.549  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4000 (http)
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:49.561  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:49.562  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:49.625  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:49.625  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1762 ms
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:49.651  INFO 1 --- [           main] .c.b.s.b.s.r.CamundaJerseyResourceConfig : Configuring camunda rest api.
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:49.691  INFO 1 --- [           main] .c.b.s.b.s.r.CamundaJerseyResourceConfig : Finished configuring camunda rest api.
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:50.087  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:50.197  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:50.271  INFO 1 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:50.370  INFO 1 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.25.Final
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:50.577  INFO 1 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:50.776  INFO 1 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:51.208  INFO 1 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:51.223  INFO 1 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:51.363  INFO 1 --- [           main] org.camunda.bpm.spring.boot              : STARTER-SB040 Setting up jobExecutor with corePoolSize=3, maxPoolSize:10
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:51.368  INFO 1 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'camundaTaskExecutor'
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:51.531  INFO 1 --- [           main] org.camunda.bpm.engine.cfg               : ENGINE-12003 Plugin 'CompositeProcessEnginePlugin[genericPropertiesConfiguration, camundaProcessEngineConfiguration, camundaDatasourceConfiguration, camundaJpaConfiguration, camundaJobConfiguration, camundaHistoryConfiguration, camundaMetricsConfiguration, camundaAuthorizationConfiguration, camundaDeploymentConfiguration, failedJobConfiguration, eventPublisherPlugin]' activated on process engine 'default'
+[32mprocess-app_1   |[0m 
+[32mprocess-app_1   |[0m   .   ____          _            __ _ _
+[32mprocess-app_1   |[0m  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+[32mprocess-app_1   |[0m ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+[32mprocess-app_1   |[0m  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+[32mprocess-app_1   |[0m   '  |____| .__|_| |_|_| |_\__, | / / / /
+[32mprocess-app_1   |[0m  =========|_|==============|___/=/_/_/_/
+[32mprocess-app_1   |[0m  :: Spring Boot ::                (v2.4.1)
+[32mprocess-app_1   |[0m 
+[32mprocess-app_1   |[0m 2021-01-10 23:11:51.844  INFO 1 --- [           main] com.alanda.process.service.Application   : Starting Application v0.0.1-SNAPSHOT using Java 11.0.9.1 on process-app with PID 1 (/app.jar started by root in /)
+[32mprocess-app_1   |[0m 2021-01-10 23:11:51.855  INFO 1 --- [           main] com.alanda.process.service.Application   : No active profile set, falling back to default profiles: default
+[32mprocess-app_1   |[0m 2021-01-10 23:11:53.387  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+[32mprocess-app_1   |[0m 2021-01-10 23:11:53.399  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+[32mprocess-app_1   |[0m 2021-01-10 23:11:53.399  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+[32mprocess-app_1   |[0m 2021-01-10 23:11:53.479  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+[32mprocess-app_1   |[0m 2021-01-10 23:11:53.487  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1448 ms
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.620  WARN 1 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/app.jar!/BOOT-INF/lib/camunda-engine-dmn-7.14.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.620  WARN 1 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/app.jar!/BOOT-INF/lib/camunda-engine-feel-api-7.14.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.620  WARN 1 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/app.jar!/BOOT-INF/lib/camunda-engine-feel-juel-7.14.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.621  WARN 1 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/app.jar!/BOOT-INF/lib/camunda-engine-feel-scala-7.14.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.621  INFO 1 --- [           main] org.camunda.bpm.spring.boot              : STARTER-SB021 Auto-Deploying resources: []
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.623  INFO 1 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-001: Initialized Camunda Spring Boot Eventing Engine Plugin.
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.623  INFO 1 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-003: Task events will be published as Spring Events.
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.623  INFO 1 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-005: Execution events will be published as Spring Events.
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.626  INFO 1 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-007: History events will be published as Spring events.
+[32mprocess-app_1   |[0m 2021-01-10 23:11:53.738  INFO 1 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:53.862  INFO 1 --- [           main] org.camunda.feel.FeelEngine              : Engine created. [value-mapper: CompositeValueMapper(List(org.camunda.feel.impl.JavaValueMapper@8a2a6a)), function-provider: org.camunda.bpm.dmn.feel.impl.scala.function.CustomFunctionTransformer@36061cf3, clock: SystemClock, configuration: Configuration(false)]
+[32mprocess-app_1   |[0m 2021-01-10 23:11:54.045  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+[32mprocess-app_1   |[0m 2021-01-10 23:11:54.081  INFO 1 --- [           main] com.alanda.process.service.Application   : Started Application in 3.077 seconds (JVM running for 3.831)
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:56.664  INFO 1 --- [           main] org.camunda.bpm.connect                  : CNCT-01004 Discovered provider for connector id 'http-connector' and class 'org.camunda.connect.httpclient.impl.HttpConnectorImpl': 'org.camunda.connect.httpclient.impl.HttpConnectorProviderImpl'
+[36mcamunda-app_1   |[0m 2021-01-10 23:11:56.666  INFO 1 --- [           main] org.camunda.bpm.connect                  : CNCT-01004 Discovered provider for connector id 'soap-http-connector' and class 'org.camunda.connect.httpclient.soap.impl.SoapHttpConnectorImpl': 'org.camunda.connect.httpclient.soap.impl.SoapHttpConnectorProviderImpl'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:01.014  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'engine' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.engine.sql'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:06.754  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'history' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.history.sql'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:07.467  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'identity' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.identity.sql'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:08.229  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'case.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.case.engine.sql'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:08.741  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'case.history' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.case.history.sql'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:08.992  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'decision.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.decision.engine.sql'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.116  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'decision.history' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.decision.history.sql'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.158  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03067 No history level property found in database
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.158  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03065 Creating historyLevel property in database for level: HistoryLevelFull(name=full, id=3)
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.204  INFO 1 --- [           main] org.camunda.bpm.engine                   : ENGINE-00001 Process Engine default created.
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.225  WARN 1 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.688  INFO 1 --- [           main] o.c.b.s.b.s.w.f.LazyInitRegistration     : lazy initialized org.camunda.bpm.spring.boot.starter.webapp.filter.LazyProcessEnginesFilter@66238be2
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.744  INFO 1 --- [           main] o.c.b.s.b.s.w.f.LazyInitRegistration     : lazy initialized org.camunda.bpm.spring.boot.starter.webapp.filter.LazySecurityFilter@200606de
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.822  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 4000 (http) with context path ''
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.834  INFO 1 --- [           main] c.a.c.services.ServicesApplication       : Started ServicesApplication in 23.727 seconds (JVM running for 24.33)
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.836  INFO 1 --- [           main] org.camunda.bpm.engine.jobexecutor       : ENGINE-14014 Starting up the JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor].
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:10.842  INFO 1 --- [ingJobExecutor]] org.camunda.bpm.engine.jobexecutor       : ENGINE-14018 JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor] starting to acquire jobs
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:11.698  INFO 1 --- [nio-4000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:11.698  INFO 1 --- [nio-4000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+[36mcamunda-app_1   |[0m 2021-01-10 23:12:11.699  INFO 1 --- [nio-4000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[32mprocess-app_1   |[0m 2021-01-10 23:12:14.757  INFO 1 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[32mprocess-app_1   |[0m 2021-01-10 23:12:14.758  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+[32mprocess-app_1   |[0m 2021-01-10 23:12:14.759  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[33mpostgres-app_1  |[0m 2021-01-10 23:16:09.313 UTC [72] ERROR:  syntax error at or near "null" at character 22
+[33mpostgres-app_1  |[0m 2021-01-10 23:16:09.313 UTC [72] STATEMENT:  SELECT count(*) FROM null
+[36mcamunda-app_1   |[0m 2021-01-10 23:16:09.365 ERROR 1 --- [nio-4000-exec-6] org.camunda.bpm.engine.context           : ENGINE-16004 Exception while closing command context: An exception occurred in the persistence layer. Please check the server logs for a detailed message and the entire exception stack trace.
+[36mcamunda-app_1   |[0m 
+[36mcamunda-app_1   |[0m org.camunda.bpm.engine.ProcessEngineException: An exception occurred in the persistence layer. Please check the server logs for a detailed message and the entire exception stack trace.
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.util.ExceptionUtil.wrapPersistenceException(ExceptionUtil.java:263) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.util.ExceptionUtil.doWithExceptionWrapper(ExceptionUtil.java:257) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.db.sql.DbSqlSession.selectOne(DbSqlSession.java:123) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.db.entitymanager.DbEntityManager.selectOne(DbEntityManager.java:187) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.TaskManager.findTaskCountByNativeQuery(TaskManager.java:152) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.NativeTaskQueryImpl.executeCount(NativeTaskQueryImpl.java:52) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.AbstractNativeQuery.execute(AbstractNativeQuery.java:140) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandExecutorImpl.execute(CommandExecutorImpl.java:28) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:110) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.spring.SpringTransactionInterceptor$1.doInTransaction(SpringTransactionInterceptor.java:46) ~[camunda-engine-spring-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-5.3.2.jar!/:5.3.2]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:44) ~[camunda-engine-spring-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.ProcessApplicationContextInterceptor.execute(ProcessApplicationContextInterceptor.java:70) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandCounterInterceptor.execute(CommandCounterInterceptor.java:35) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:33) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.AbstractNativeQuery.count(AbstractNativeQuery.java:112) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at com.alanda.camunda.services.processes.services.ProcessExecutionService.getExecutions(ProcessExecutionService.java:38) ~[classes!/:0.0.1-SNAPSHOT]
+[36mcamunda-app_1   |[0m 	at com.alanda.camunda.services.processes.services.ProcessExecutionService.execute(ProcessExecutionService.java:28) ~[classes!/:0.0.1-SNAPSHOT]
+[36mcamunda-app_1   |[0m 	at com.alanda.camunda.services.processes.delegates.ProcessInvocationDelegate.execute(ProcessInvocationDelegate.java:19) ~[classes!/:0.0.1-SNAPSHOT]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.delegate.JavaDelegateInvocation.invoke(JavaDelegateInvocation.java:40) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.delegate.DelegateInvocation.proceed(DelegateInvocation.java:58) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.delegate.DefaultDelegateInterceptor.handleInvocationInContext(DefaultDelegateInterceptor.java:92) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.delegate.DefaultDelegateInterceptor.handleInvocation(DefaultDelegateInterceptor.java:63) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ServiceTaskJavaDelegateActivityBehavior.execute(ServiceTaskJavaDelegateActivityBehavior.java:55) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ServiceTaskJavaDelegateActivityBehavior.performExecution(ServiceTaskJavaDelegateActivityBehavior.java:44) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.TaskActivityBehavior.execute(TaskActivityBehavior.java:69) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ClassDelegateActivityBehavior$1.call(ClassDelegateActivityBehavior.java:68) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ClassDelegateActivityBehavior$1.call(ClassDelegateActivityBehavior.java:65) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.AbstractBpmnActivityBehavior.executeWithErrorPropagation(AbstractBpmnActivityBehavior.java:90) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ClassDelegateActivityBehavior.execute(ClassDelegateActivityBehavior.java:65) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute$2.callback(PvmAtomicOperationActivityExecute.java:61) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute$2.callback(PvmAtomicOperationActivityExecute.java:50) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.continueIfExecutionDoesNotAffectNextOperation(PvmExecutionImpl.java:2036) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute.execute(PvmAtomicOperationActivityExecute.java:42) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute.execute(PvmAtomicOperationActivityExecute.java:31) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:628) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:602) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl$6.callback(PvmExecutionImpl.java:1975) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl$6.callback(PvmExecutionImpl.java:1972) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.continueExecutionIfNotCanceled(PvmExecutionImpl.java:2042) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.dispatchDelayedEventsAndPerformOperation(PvmExecutionImpl.java:1991) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.dispatchDelayedEventsAndPerformOperation(PvmExecutionImpl.java:1972) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationTransitionNotifyListenerStart.eventNotificationsCompleted(PvmAtomicOperationTransitionNotifyListenerStart.java:60) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationTransitionNotifyListenerStart.eventNotificationsCompleted(PvmAtomicOperationTransitionNotifyListenerStart.java:30) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:66) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:76) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:637) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:612) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:62) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:76) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:637) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:612) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:62) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:76) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:637) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:612) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:62) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:628) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:602) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationTransitionCreateScope.scopeCreated(PvmAtomicOperationTransitionCreateScope.java:38) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationCreateScope.execute(PvmAtomicOperationCreateScope.java:54) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationCreateScope.execute(PvmAtomicOperationCreateScope.java:28) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:118) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:628) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:602) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.start(PvmExecutionImpl.java:287) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.start(ExecutionEntity.java:458) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.start(PvmExecutionImpl.java:263) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.cmd.StartProcessInstanceCmd.execute(StartProcessInstanceCmd.java:66) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.cmd.StartProcessInstanceCmd.execute(StartProcessInstanceCmd.java:38) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandExecutorImpl.execute(CommandExecutorImpl.java:28) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:110) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.spring.SpringTransactionInterceptor$1.doInTransaction(SpringTransactionInterceptor.java:46) ~[camunda-engine-spring-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-5.3.2.jar!/:5.3.2]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:44) ~[camunda-engine-spring-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.ProcessApplicationContextInterceptor.execute(ProcessApplicationContextInterceptor.java:70) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandCounterInterceptor.execute(CommandCounterInterceptor.java:35) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:33) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.ProcessInstantiationBuilderImpl.executeWithVariablesInReturn(ProcessInstantiationBuilderImpl.java:166) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.rest.sub.repository.impl.ProcessDefinitionResourceImpl.startProcessInstanceAtActivities(ProcessDefinitionResourceImpl.java:174) ~[camunda-engine-rest-jaxrs2-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.rest.sub.repository.impl.ProcessDefinitionResourceImpl.startProcessInstance(ProcessDefinitionResourceImpl.java:124) ~[camunda-engine-rest-jaxrs2-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+[36mcamunda-app_1   |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+[36mcamunda-app_1   |[0m 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+[36mcamunda-app_1   |[0m 	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:124) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:167) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$TypeOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:219) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:79) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:469) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:391) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:80) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:255) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:248) ~[jersey-common-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:244) ~[jersey-common-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors.process(Errors.java:292) ~[jersey-common-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors.process(Errors.java:274) ~[jersey-common-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors.process(Errors.java:244) ~[jersey-common-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:265) ~[jersey-common-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:234) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:680) ~[jersey-server-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:394) ~[jersey-container-servlet-core-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:346) ~[jersey-container-servlet-core-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:366) ~[jersey-container-servlet-core-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:319) ~[jersey-container-servlet-core-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:205) ~[jersey-container-servlet-core-2.32.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.rest.filter.CacheControlFilter.doFilter(CacheControlFilter.java:45) ~[camunda-engine-rest-jaxrs2-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.rest.filter.EmptyBodyFilter.doFilter(EmptyBodyFilter.java:99) ~[camunda-engine-rest-jaxrs2-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.2.jar!/:5.3.2]
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.2.jar!/:5.3.2]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.2.jar!/:5.3.2]
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.2.jar!/:5.3.2]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.2.jar!/:5.3.2]
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.2.jar!/:5.3.2]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+[36mcamunda-app_1   |[0m 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+[36mcamunda-app_1   |[0m 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.41.jar!/:9.0.41]
+[36mcamunda-app_1   |[0m 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+[36mcamunda-app_1   |[0m Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+[36mcamunda-app_1   |[0m ### Error querying database.  Cause: org.postgresql.util.PSQLException: ERROR: syntax error at or near "null"
+[36mcamunda-app_1   |[0m   Position: 22
+[36mcamunda-app_1   |[0m ### The error may exist in org/camunda/bpm/engine/impl/mapping/entity/Task.xml
+[36mcamunda-app_1   |[0m ### The error may involve org.camunda.bpm.engine.impl.persistence.entity.TaskEntity.selectTaskCountByNativeQuery-Inline
+[36mcamunda-app_1   |[0m ### The error occurred while setting parameters
+[36mcamunda-app_1   |[0m ### SQL: SELECT count(*) FROM null
+[36mcamunda-app_1   |[0m ### Cause: org.postgresql.util.PSQLException: ERROR: syntax error at or near "null"
+[36mcamunda-app_1   |[0m   Position: 22
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:149) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.db.sql.DbSqlSession.lambda$selectOne$3(DbSqlSession.java:123) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.util.ExceptionUtil.doWithExceptionWrapper(ExceptionUtil.java:254) ~[camunda-engine-7.14.0.jar!/:7.14.0]
+[36mcamunda-app_1   |[0m 	... 167 common frames omitted
+[36mcamunda-app_1   |[0m Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "null"
+[36mcamunda-app_1   |[0m   Position: 22
+[36mcamunda-app_1   |[0m 	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553) ~[postgresql-42.2.18.jar!/:42.2.18]
+[36mcamunda-app_1   |[0m 	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285) ~[postgresql-42.2.18.jar!/:42.2.18]
+[36mcamunda-app_1   |[0m 	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323) ~[postgresql-42.2.18.jar!/:42.2.18]
+[36mcamunda-app_1   |[0m 	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473) ~[postgresql-42.2.18.jar!/:42.2.18]
+[36mcamunda-app_1   |[0m 	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393) ~[postgresql-42.2.18.jar!/:42.2.18]
+[36mcamunda-app_1   |[0m 	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:164) ~[postgresql-42.2.18.jar!/:42.2.18]
+[36mcamunda-app_1   |[0m 	at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:153) ~[postgresql-42.2.18.jar!/:42.2.18]
+[36mcamunda-app_1   |[0m 	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-3.4.5.jar!/:na]
+[36mcamunda-app_1   |[0m 	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-3.4.5.jar!/:na]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.BatchExecutor.doQuery(BatchExecutor.java:92) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.3.jar!/:3.5.3]
+[36mcamunda-app_1   |[0m 	... 171 common frames omitted
+[36mcamunda-app_1   |[0m 
+[36mcamunda-app_1   |[0m 2021-01-10 23:16:09.399  WARN 1 --- [nio-4000-exec-6] org.camunda.bpm.engine.rest.exception    : ENGINE-REST-HTTP500 org.camunda.bpm.engine.rest.exception.RestException: Cannot instantiate process definition payment-retrieval:2:d08d3a1e-5399-11eb-bca2-0242ac1e0003: An exception occurred in the persistence layer. Please check the server logs for a detailed message and the entire exception stack trace.
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.rest.sub.repository.impl.ProcessDefinitionResourceImpl.startProcessInstance(ProcessDefinitionResourceImpl.java:130)
+[36mcamunda-app_1   |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[36mcamunda-app_1   |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[36mcamunda-app_1   |[0m 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[36mcamunda-app_1   |[0m 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:124)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:167)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$TypeOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:219)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:79)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:469)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:391)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:80)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:255)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:248)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:244)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors.process(Errors.java:292)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors.process(Errors.java:274)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.internal.Errors.process(Errors.java:244)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:265)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:234)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:680)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:394)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:346)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:366)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:319)
+[36mcamunda-app_1   |[0m 	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:205)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+[36mcamunda-app_1   |[0m 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.rest.filter.CacheControlFilter.doFilter(CacheControlFilter.java:45)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.rest.filter.EmptyBodyFilter.doFilter(EmptyBodyFilter.java:99)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+[36mcamunda-app_1   |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+[36mcamunda-app_1   |[0m 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+[36mcamunda-app_1   |[0m 	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+[36mcamunda-app_1   |[0m 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+[36mcamunda-app_1   |[0m 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+[36mcamunda-app_1   |[0m 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+[36mcamunda-app_1   |[0m 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+[36mcamunda-app_1   |[0m 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+[36mcamunda-app_1   |[0m 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+[36mcamunda-app_1   |[0m 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+[36mcamunda-app_1   |[0m 	at java.base/java.lang.Thread.run(Thread.java:834)
+[36mcamunda-app_1   |[0m Caused by: org.camunda.bpm.engine.ProcessEngineException: An exception occurred in the persistence layer. Please check the server logs for a detailed message and the entire exception stack trace.
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.util.ExceptionUtil.wrapPersistenceException(ExceptionUtil.java:263)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.util.ExceptionUtil.doWithExceptionWrapper(ExceptionUtil.java:257)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.db.sql.DbSqlSession.selectOne(DbSqlSession.java:123)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.db.entitymanager.DbEntityManager.selectOne(DbEntityManager.java:187)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.TaskManager.findTaskCountByNativeQuery(TaskManager.java:152)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.NativeTaskQueryImpl.executeCount(NativeTaskQueryImpl.java:52)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.AbstractNativeQuery.execute(AbstractNativeQuery.java:140)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandExecutorImpl.execute(CommandExecutorImpl.java:28)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:110)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.spring.SpringTransactionInterceptor$1.doInTransaction(SpringTransactionInterceptor.java:46)
+[36mcamunda-app_1   |[0m 	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:44)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.ProcessApplicationContextInterceptor.execute(ProcessApplicationContextInterceptor.java:70)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandCounterInterceptor.execute(CommandCounterInterceptor.java:35)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:33)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.AbstractNativeQuery.count(AbstractNativeQuery.java:112)
+[36mcamunda-app_1   |[0m 	at com.alanda.camunda.services.processes.services.ProcessExecutionService.getExecutions(ProcessExecutionService.java:38)
+[36mcamunda-app_1   |[0m 	at com.alanda.camunda.services.processes.services.ProcessExecutionService.execute(ProcessExecutionService.java:28)
+[36mcamunda-app_1   |[0m 	at com.alanda.camunda.services.processes.delegates.ProcessInvocationDelegate.execute(ProcessInvocationDelegate.java:19)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.delegate.JavaDelegateInvocation.invoke(JavaDelegateInvocation.java:40)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.delegate.DelegateInvocation.proceed(DelegateInvocation.java:58)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.delegate.DefaultDelegateInterceptor.handleInvocationInContext(DefaultDelegateInterceptor.java:92)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.delegate.DefaultDelegateInterceptor.handleInvocation(DefaultDelegateInterceptor.java:63)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ServiceTaskJavaDelegateActivityBehavior.execute(ServiceTaskJavaDelegateActivityBehavior.java:55)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ServiceTaskJavaDelegateActivityBehavior.performExecution(ServiceTaskJavaDelegateActivityBehavior.java:44)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.TaskActivityBehavior.execute(TaskActivityBehavior.java:69)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ClassDelegateActivityBehavior$1.call(ClassDelegateActivityBehavior.java:68)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ClassDelegateActivityBehavior$1.call(ClassDelegateActivityBehavior.java:65)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.AbstractBpmnActivityBehavior.executeWithErrorPropagation(AbstractBpmnActivityBehavior.java:90)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.bpmn.behavior.ClassDelegateActivityBehavior.execute(ClassDelegateActivityBehavior.java:65)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute$2.callback(PvmAtomicOperationActivityExecute.java:61)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute$2.callback(PvmAtomicOperationActivityExecute.java:50)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.continueIfExecutionDoesNotAffectNextOperation(PvmExecutionImpl.java:2036)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute.execute(PvmAtomicOperationActivityExecute.java:42)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute.execute(PvmAtomicOperationActivityExecute.java:31)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:628)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:602)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl$6.callback(PvmExecutionImpl.java:1975)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl$6.callback(PvmExecutionImpl.java:1972)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.continueExecutionIfNotCanceled(PvmExecutionImpl.java:2042)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.dispatchDelayedEventsAndPerformOperation(PvmExecutionImpl.java:1991)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.dispatchDelayedEventsAndPerformOperation(PvmExecutionImpl.java:1972)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationTransitionNotifyListenerStart.eventNotificationsCompleted(PvmAtomicOperationTransitionNotifyListenerStart.java:60)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationTransitionNotifyListenerStart.eventNotificationsCompleted(PvmAtomicOperationTransitionNotifyListenerStart.java:30)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:66)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:76)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:637)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:612)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:62)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:76)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:637)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:612)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:62)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:76)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:637)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:612)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:62)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:628)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:602)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationTransitionCreateScope.scopeCreated(PvmAtomicOperationTransitionCreateScope.java:38)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationCreateScope.execute(PvmAtomicOperationCreateScope.java:54)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationCreateScope.execute(PvmAtomicOperationCreateScope.java:28)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:118)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:628)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:602)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.start(PvmExecutionImpl.java:287)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.start(ExecutionEntity.java:458)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.start(PvmExecutionImpl.java:263)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.cmd.StartProcessInstanceCmd.execute(StartProcessInstanceCmd.java:66)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.cmd.StartProcessInstanceCmd.execute(StartProcessInstanceCmd.java:38)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandExecutorImpl.execute(CommandExecutorImpl.java:28)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:110)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.spring.SpringTransactionInterceptor$1.doInTransaction(SpringTransactionInterceptor.java:46)
+[36mcamunda-app_1   |[0m 	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:44)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.ProcessApplicationContextInterceptor.execute(ProcessApplicationContextInterceptor.java:70)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.CommandCounterInterceptor.execute(CommandCounterInterceptor.java:35)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:33)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.ProcessInstantiationBuilderImpl.executeWithVariablesInReturn(ProcessInstantiationBuilderImpl.java:166)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.rest.sub.repository.impl.ProcessDefinitionResourceImpl.startProcessInstanceAtActivities(ProcessDefinitionResourceImpl.java:174)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.rest.sub.repository.impl.ProcessDefinitionResourceImpl.startProcessInstance(ProcessDefinitionResourceImpl.java:124)
+[36mcamunda-app_1   |[0m 	... 65 more
+[36mcamunda-app_1   |[0m Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+[36mcamunda-app_1   |[0m ### Error querying database.  Cause: org.postgresql.util.PSQLException: ERROR: syntax error at or near "null"
+[36mcamunda-app_1   |[0m   Position: 22
+[36mcamunda-app_1   |[0m ### The error may exist in org/camunda/bpm/engine/impl/mapping/entity/Task.xml
+[36mcamunda-app_1   |[0m ### The error may involve org.camunda.bpm.engine.impl.persistence.entity.TaskEntity.selectTaskCountByNativeQuery-Inline
+[36mcamunda-app_1   |[0m ### The error occurred while setting parameters
+[36mcamunda-app_1   |[0m ### SQL: SELECT count(*) FROM null
+[36mcamunda-app_1   |[0m ### Cause: org.postgresql.util.PSQLException: ERROR: syntax error at or near "null"
+[36mcamunda-app_1   |[0m   Position: 22
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:149)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.db.sql.DbSqlSession.lambda$selectOne$3(DbSqlSession.java:123)
+[36mcamunda-app_1   |[0m 	at org.camunda.bpm.engine.impl.util.ExceptionUtil.doWithExceptionWrapper(ExceptionUtil.java:254)
+[36mcamunda-app_1   |[0m 	... 167 more
+[36mcamunda-app_1   |[0m Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "null"
+[36mcamunda-app_1   |[0m   Position: 22
+[36mcamunda-app_1   |[0m 	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+[36mcamunda-app_1   |[0m 	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+[36mcamunda-app_1   |[0m 	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+[36mcamunda-app_1   |[0m 	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473)
+[36mcamunda-app_1   |[0m 	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393)
+[36mcamunda-app_1   |[0m 	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:164)
+[36mcamunda-app_1   |[0m 	at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:153)
+[36mcamunda-app_1   |[0m 	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+[36mcamunda-app_1   |[0m 	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.BatchExecutor.doQuery(BatchExecutor.java:92)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
+[36mcamunda-app_1   |[0m 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+[36mcamunda-app_1   |[0m 	... 171 more
+[36mcamunda-app_1   |[0m 
