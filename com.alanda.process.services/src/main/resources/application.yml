@@ -1,4 +1,6 @@
 process.manager.camunda:
-  api: http://0.0.0.0:4000/engine-rest
+  api: http://localhost:4001/engine-rest
   upload: /deployment/create
   duplicate-filtering: true
+server:
+  port: 8080
