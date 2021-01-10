@@ -26,11 +26,12 @@ echo "Creating environment with docker..."
 echo "Using development configuration ./config/.env.dev"
 cd ..
 
-docker-compose --env-file ./config/.env.dev up --build --force-recreate > ./logs/startup.logs 2>&1 & 
+rm ./logs/startup.log
+docker-compose --env-file ./config/.env.dev up --build --force-recreate > ./logs/startup.log 2>&1 & 
 
 echo "Please wait for the docker setup to be complete..."
 
-sleep 20
+sleep 10
 
 printf "\n"
 
