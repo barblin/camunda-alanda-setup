@@ -42,7 +42,7 @@ apt-get install docker-compose
 
 Make sure that you have execute permissions. To make sure, you can simply execute 
 
-```chmod -R 755 ./``
+```chmod -R 755 ./```
 
 ## Steps of startup.sh
 
