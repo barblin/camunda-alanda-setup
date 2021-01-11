@@ -32,19 +32,7 @@ docker-compose --env-file ./config/.env.dev up --build --force-recreate > ./logs
 echo "Please wait for the docker setup to be complete..."
 echo "Refer to ./logs/startup.log for current status"
 
-resp=""
-retries=30
-while [[ ("$resp" != "200") && ( "$retries" > 0 ) ]]; do
-	echo "$retries retries left. Testing for service availability..."
-	sleep 3s
-	retries=`expr $retries - 1`
-	resp=$(curl -o /dev/null -s -w "%{http_code}\n" http://localhost:4000/api/processes/executions)
-done
-
-if (( "$retries" <= 0 )); then
-	echo "Site not reachable. Setup aborted. Please refer to ./logs/startup.log for more information."
-	exit 1
-fi
+./scripts/health-check.sh
 
 printf "\n"
 echo "Site available"
