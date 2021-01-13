@@ -27,7 +27,7 @@ echo "Using development configuration ./config/.env.dev"
 cd ..
 
 rm ./logs/startup.log
-docker-compose --env-file ./config/.env.dev up --build --force-recreate > ./logs/startup.log 2>&1 & 
+docker-compose --env-file ./config/.env.dev up --build --force-recreate > ./logs/startup.log 2>&1 &
 
 echo "Please wait for the docker setup to be complete..."
 echo "Refer to ./logs/startup.log for current status"
@@ -46,3 +46,6 @@ printf "\n"
 echo "##############"
 echo "Setup complete"
 echo "##############"
+
+printf "\n"
+echo "Process is now available to be inspected: http://localhost:4000/camunda/app/cockpit/default/#/dashboard"

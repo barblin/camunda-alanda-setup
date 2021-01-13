@@ -1,100 +1,56 @@
 {
+	"variables": [],
 	"info": {
-		"_postman_id": "085d0ec3-3173-4aee-a304-bb7604930654",
 		"name": "Camunda Alanda Setup",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "208e1ef4-b219-9ccf-1b2b-6c2d0dbb5e95",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Upload BPMN",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
 			"request": {
+				"url": "http://0.0.0.0:8080/api/uploads/processes",
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"path\": \"./ressources\",\r\n    \"name\": \"payment.bpmn\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n    \"path\": \"./ressources\",\r\n    \"name\": \"payment.bpmn\"\r\n}"
 				},
-				"url": {
-					"raw": "http://0.0.0.0:8080/api/uploads/processes",
-					"protocol": "http",
-					"host": [
-						"0",
-						"0",
-						"0",
-						"0"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"uploads",
-						"processes"
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		},
 		{
 			"name": "Start Process",
 			"request": {
+				"url": "http://localhost:4000/engine-rest/process-definition/key/Process_0h50lyc/start",
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"variables\": {\r\n    \"amount\":{\"value\":\"100\",\"type\":\"String\"}\r\n  }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n  \"variables\": {\r\n  }\r\n}"
 				},
-				"url": {
-					"raw": "http://localhost:4000/engine-rest/process-definition/key/payment-retrieval/start",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"engine-rest",
-						"process-definition",
-						"key",
-						"payment-retrieval",
-						"start"
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		},
 		{
 			"name": "Upload BPMN Camunda",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
 			"request": {
+				"url": "http://localhost:4000/engine-rest/deployment/create",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -103,7 +59,8 @@
 						{
 							"key": "process.bpmn",
 							"type": "file",
-							"src": "/D:/Work/Alanda/camunda-alanda-setup/ressources/payment.bpmn"
+							"src": "/D:/Work/Alanda/camunda-alanda-setup/ressources/payment.bpmn",
+							"value": ""
 						},
 						{
 							"key": "deployment-name",
@@ -128,40 +85,18 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "http://localhost:4000/engine-rest/deployment/create",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"engine-rest",
-						"deployment",
-						"create"
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		},
 		{
 			"name": "Get process executions",
 			"request": {
+				"url": "http://localhost:4000/api/processes/executions",
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/api/processes/executions",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"api",
-						"processes",
-						"executions"
-					]
-				}
+				"body": {},
+				"description": ""
 			},
 			"response": []
 		}
