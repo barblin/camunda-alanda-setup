@@ -120,3 +120,45 @@ http://localhost:4000/api/processes/executions
 
 To verify startup success and file-upload success, please visit
 http://localhost:4000/camunda/app/cockpit/default/#/dashboard
+
+## Supported features
+
+### Upload .bpmn file
+This example setup will upload a simple `.bpmn` during setup. It will ask the user to press `any key` to proceed. In 
+addition to that, users can manually upload files from the folder that was provided via mnt share. In this setup, this folder 
+is simply called `resources` and provided within the setup folder. The endpoint for this feature is documented within the postman 
+collection and looks like this:
+
+```
+POST /api/uploads/processes
+```   
+
+### Start process
+After the files has been uploaded, a user can choose to execute the process either via the dashboard
+
+ * http://localhost:4000/camunda/app/cockpit/default/#/dashboard
+
+Or by making use of this endpoint:
+
+```
+POST /engine-rest/process-definition/key/{process-key}/start
+``` 
+which is documented in the postman collection. Our setup example would have the process-key `Process_0h50lyc`.
+
+During execution of this process, a service task is called (`com.alanda.camunda.services.processes.delegates.ProcessInvocationDelegate`). This 
+will update the amount of executed processes and the timestamp in-memory.
+
+You can get the result via the next feature.
+
+### Get amount of executed processes
+At any time, you can fetch the amount of executed processes and the timestamp of the last update with the following endpoint:
+```
+GET /api/processes/executions
+``` 
+This endpoint is also documented within the postman collection. This request will return a body that will look like this:
+```
+{
+    "amount": 8,
+    "timestamp": "2021-01-13T14:48:18.273362"
+}
+``` 
