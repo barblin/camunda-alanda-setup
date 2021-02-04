@@ -1,0 +1,198 @@
+Creating network "camunda-alanda-setup_default" with the default driver
+Building camunda-app
+Step 1/4 : FROM openjdk:11
+ ---> 1eec9f9fe101
+Step 2/4 : ARG JAR_FILE=target/*.jar
+ ---> Using cache
+ ---> 821faf1a93a8
+Step 3/4 : COPY ${JAR_FILE} app.jar
+ ---> edbba1a29063
+Step 4/4 : ENTRYPOINT ["java","-jar","/app.jar"]
+ ---> Running in fd984ee661c0
+Removing intermediate container fd984ee661c0
+ ---> 195a48eecfc4
+
+Successfully built 195a48eecfc4
+Successfully tagged camunda-app:latest
+Building process-app
+Step 1/4 : FROM openjdk:11
+ ---> 1eec9f9fe101
+Step 2/4 : ARG JAR_FILE=target/*.jar
+ ---> Using cache
+ ---> 821faf1a93a8
+Step 3/4 : COPY ${JAR_FILE} app.jar
+ ---> 4d5c4c275f12
+Step 4/4 : ENTRYPOINT ["java","-jar","/app.jar"]
+ ---> Running in 8443ef3fee76
+Removing intermediate container 8443ef3fee76
+ ---> f4483535ac04
+
+Successfully built f4483535ac04
+Successfully tagged process-app:latest
+Creating camunda-alanda-setup_postgres-app_1 ... 
+[1A[2KCreating camunda-alanda-setup_postgres-app_1 ... [32mdone[0m[1BCreating camunda-alanda-setup_camunda-app_1  ... 
+[1A[2KCreating camunda-alanda-setup_camunda-app_1  ... [32mdone[0m[1BCreating camunda-alanda-setup_process-app_1  ... 
+[1A[2KCreating camunda-alanda-setup_process-app_1  ... [32mdone[0m[1BAttaching to camunda-alanda-setup_postgres-app_1, camunda-alanda-setup_camunda-app_1, camunda-alanda-setup_process-app_1
+[33mpostgres-app_1  |[0m The files belonging to this database system will be owned by user "postgres".
+[33mpostgres-app_1  |[0m This user must also own the server process.
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m The database cluster will be initialized with locale "en_US.utf8".
+[33mpostgres-app_1  |[0m The default database encoding has accordingly been set to "UTF8".
+[33mpostgres-app_1  |[0m The default text search configuration will be set to "english".
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m Data page checksums are disabled.
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m fixing permissions on existing directory /var/lib/postgresql/data ... ok
+[33mpostgres-app_1  |[0m creating subdirectories ... ok
+[33mpostgres-app_1  |[0m selecting dynamic shared memory implementation ... posix
+[33mpostgres-app_1  |[0m selecting default max_connections ... 100
+[33mpostgres-app_1  |[0m selecting default shared_buffers ... 128MB
+[33mpostgres-app_1  |[0m selecting default time zone ... Etc/UTC
+[33mpostgres-app_1  |[0m creating configuration files ... ok
+[33mpostgres-app_1  |[0m running bootstrap script ... ok
+[33mpostgres-app_1  |[0m performing post-bootstrap initialization ... ok
+[33mpostgres-app_1  |[0m syncing data to disk ... initdb: warning: enabling "trust" authentication for local connections
+[33mpostgres-app_1  |[0m You can change this by editing pg_hba.conf or using the option -A, or
+[33mpostgres-app_1  |[0m --auth-local and --auth-host, the next time you run initdb.
+[33mpostgres-app_1  |[0m ok
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m Success. You can now start the database server using:
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m     pg_ctl -D /var/lib/postgresql/data -l logfile start
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m waiting for server to start....2021-01-13 15:25:39.791 UTC [46] LOG:  starting PostgreSQL 13.1 (Debian 13.1-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:39.819 UTC [46] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:40.078 UTC [47] LOG:  database system was shut down at 2021-01-13 15:25:38 UTC
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:40.113 UTC [46] LOG:  database system is ready to accept connections
+[33mpostgres-app_1  |[0m  done
+[33mpostgres-app_1  |[0m server started
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:40.171 UTC [46] LOG:  received fast shutdown request
+[36mcamunda-app_1   |[0m 
+[36mcamunda-app_1   |[0m  ____                                 _         ____  ____  __  __
+[36mcamunda-app_1   |[0m / ___| __ _ _ __ ___  _   _ _ __   __| | __ _  | __ )|  _ \|  \/  |
+[36mcamunda-app_1   |[0m | |   / _` | '_ ` _ \| | | | '_ \ / _` |/ _` | |  _ \| |_) | |\/| |
+[36mcamunda-app_1   |[0m | |__| (_| | | | | | | |_| | | | | (_| | (_| | | |_) |  __/| |  | |
+[36mcamunda-app_1   |[0m \____/\__,_|_| |_| |_|\__,_|_| |_|\__,_|\__,_| |____/|_|   |_|  |_|
+[36mcamunda-app_1   |[0m 
+[36mcamunda-app_1   |[0m   Spring-Boot:  (v2.4.1)
+[36mcamunda-app_1   |[0m   Camunda BPM: (v7.14.0)
+[36mcamunda-app_1   |[0m   Camunda BPM Spring Boot Starter: (v7.14.0)
+[36mcamunda-app_1   |[0m 
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:41.426  INFO 1 --- [           main] c.a.c.services.ServicesApplication       : Starting ServicesApplication v0.0.1-SNAPSHOT using Java 11.0.9.1 on 4d8d9eef6e69 with PID 1 (/app.jar started by root in /)
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:41.429  INFO 1 --- [           main] c.a.c.services.ServicesApplication       : No active profile set, falling back to default profiles: default
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:42.423  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:42.461  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 0 JPA repository interfaces.
+[33mpostgres-app_1  |[0m waiting for server to shut down....2021-01-13 15:25:40.210 UTC [46] LOG:  aborting any active transactions
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:40.211 UTC [46] LOG:  background worker "logical replication launcher" (PID 53) exited with exit code 1
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:40.215 UTC [48] LOG:  shutting down
+[33mpostgres-app_1  |[0m .2021-01-13 15:25:41.702 UTC [46] LOG:  database system is shut down
+[33mpostgres-app_1  |[0m  done
+[33mpostgres-app_1  |[0m server stopped
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m PostgreSQL init process complete; ready for start up.
+[33mpostgres-app_1  |[0m 
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:41.874 UTC [1] LOG:  starting PostgreSQL 13.1 (Debian 13.1-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:41.874 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:41.874 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:42.008 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:42.134 UTC [65] LOG:  database system was shut down at 2021-01-13 15:25:41 UTC
+[33mpostgres-app_1  |[0m 2021-01-13 15:25:42.202 UTC [1] LOG:  database system is ready to accept connections
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:43.408  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4000 (http)
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:43.426  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:43.426  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:43.541  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:43.542  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2048 ms
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:43.582  INFO 1 --- [           main] .c.b.s.b.s.r.CamundaJerseyResourceConfig : Configuring camunda rest api.
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:43.647  INFO 1 --- [           main] .c.b.s.b.s.r.CamundaJerseyResourceConfig : Finished configuring camunda rest api.
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:44.633  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+[32mprocess-app_1   |[0m 
+[32mprocess-app_1   |[0m   .   ____          _            __ _ _
+[32mprocess-app_1   |[0m  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+[32mprocess-app_1   |[0m ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+[32mprocess-app_1   |[0m  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+[32mprocess-app_1   |[0m   '  |____| .__|_| |_|_| |_\__, | / / / /
+[32mprocess-app_1   |[0m  =========|_|==============|___/=/_/_/_/
+[32mprocess-app_1   |[0m  :: Spring Boot ::                (v2.4.1)
+[32mprocess-app_1   |[0m 
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:44.907  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+[32mprocess-app_1   |[0m 2021-01-13 15:25:45.001  INFO 1 --- [           main] com.alanda.process.service.Application   : Starting Application v0.0.1-SNAPSHOT using Java 11.0.9.1 on process-app with PID 1 (/app.jar started by root in /)
+[32mprocess-app_1   |[0m 2021-01-13 15:25:45.023  INFO 1 --- [           main] com.alanda.process.service.Application   : No active profile set, falling back to default profiles: default
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:45.087  INFO 1 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:45.327  INFO 1 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.25.Final
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:45.725  INFO 1 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:46.018  INFO 1 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:46.448  INFO 1 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:46.466  INFO 1 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:46.543  INFO 1 --- [           main] org.camunda.bpm.spring.boot              : STARTER-SB040 Setting up jobExecutor with corePoolSize=3, maxPoolSize:10
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:46.545  INFO 1 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'camundaTaskExecutor'
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:46.617  INFO 1 --- [           main] org.camunda.bpm.engine.cfg               : ENGINE-12003 Plugin 'CompositeProcessEnginePlugin[genericPropertiesConfiguration, camundaProcessEngineConfiguration, camundaDatasourceConfiguration, camundaJpaConfiguration, camundaJobConfiguration, camundaHistoryConfiguration, camundaMetricsConfiguration, camundaAuthorizationConfiguration, camundaDeploymentConfiguration, failedJobConfiguration, eventPublisherPlugin]' activated on process engine 'default'
+[32mprocess-app_1   |[0m 2021-01-13 15:25:47.491  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+[32mprocess-app_1   |[0m 2021-01-13 15:25:47.505  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+[32mprocess-app_1   |[0m 2021-01-13 15:25:47.506  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+[32mprocess-app_1   |[0m 2021-01-13 15:25:47.600  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+[32mprocess-app_1   |[0m 2021-01-13 15:25:47.600  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2219 ms
+[32mprocess-app_1   |[0m 2021-01-13 15:25:47.900  INFO 1 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+[32mprocess-app_1   |[0m 2021-01-13 15:25:48.247  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+[32mprocess-app_1   |[0m 2021-01-13 15:25:48.276  INFO 1 --- [           main] com.alanda.process.service.Application   : Started Application in 4.758 seconds (JVM running for 5.538)
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.690  WARN 1 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/app.jar!/BOOT-INF/lib/camunda-engine-dmn-7.14.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.690  WARN 1 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/app.jar!/BOOT-INF/lib/camunda-engine-feel-api-7.14.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.690  WARN 1 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/app.jar!/BOOT-INF/lib/camunda-engine-feel-juel-7.14.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.690  WARN 1 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/app.jar!/BOOT-INF/lib/camunda-engine-feel-scala-7.14.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.690  INFO 1 --- [           main] org.camunda.bpm.spring.boot              : STARTER-SB021 Auto-Deploying resources: []
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.693  INFO 1 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-001: Initialized Camunda Spring Boot Eventing Engine Plugin.
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.693  INFO 1 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-003: Task events will be published as Spring Events.
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.693  INFO 1 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-005: Execution events will be published as Spring Events.
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.696  INFO 1 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-007: History events will be published as Spring events.
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:48.931  INFO 1 --- [           main] org.camunda.feel.FeelEngine              : Engine created. [value-mapper: CompositeValueMapper(List(org.camunda.feel.impl.JavaValueMapper@f679798)), function-provider: org.camunda.bpm.dmn.feel.impl.scala.function.CustomFunctionTransformer@5a2bd7c8, clock: SystemClock, configuration: Configuration(false)]
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:51.847  INFO 1 --- [           main] org.camunda.bpm.connect                  : CNCT-01004 Discovered provider for connector id 'http-connector' and class 'org.camunda.connect.httpclient.impl.HttpConnectorImpl': 'org.camunda.connect.httpclient.impl.HttpConnectorProviderImpl'
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:51.849  INFO 1 --- [           main] org.camunda.bpm.connect                  : CNCT-01004 Discovered provider for connector id 'soap-http-connector' and class 'org.camunda.connect.httpclient.soap.impl.SoapHttpConnectorImpl': 'org.camunda.connect.httpclient.soap.impl.SoapHttpConnectorProviderImpl'
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:54.928  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'engine' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.engine.sql'
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:58.486  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'history' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.history.sql'
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:58.893  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'identity' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.identity.sql'
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:59.382  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'case.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.case.engine.sql'
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:59.745  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'case.history' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.case.history.sql'
+[36mcamunda-app_1   |[0m 2021-01-13 15:25:59.956  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'decision.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.decision.engine.sql'
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:00.707  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03016 Performing database operation 'create' on component 'decision.history' with resource 'org/camunda/bpm/engine/db/create/activiti.postgres.create.decision.history.sql'
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:00.740  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03067 No history level property found in database
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:00.740  INFO 1 --- [           main] org.camunda.bpm.engine.persistence       : ENGINE-03065 Creating historyLevel property in database for level: HistoryLevelFull(name=full, id=3)
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:00.785  INFO 1 --- [           main] org.camunda.bpm.engine                   : ENGINE-00001 Process Engine default created.
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:00.803  WARN 1 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:01.321  INFO 1 --- [           main] o.c.b.s.b.s.w.f.LazyInitRegistration     : lazy initialized org.camunda.bpm.spring.boot.starter.webapp.filter.LazyProcessEnginesFilter@344344fa
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:01.404  INFO 1 --- [           main] o.c.b.s.b.s.w.f.LazyInitRegistration     : lazy initialized org.camunda.bpm.spring.boot.starter.webapp.filter.LazySecurityFilter@70e659aa
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:01.523  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 4000 (http) with context path ''
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:01.542  INFO 1 --- [           main] c.a.c.services.ServicesApplication       : Started ServicesApplication in 20.715 seconds (JVM running for 21.367)
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:01.545  INFO 1 --- [           main] org.camunda.bpm.engine.jobexecutor       : ENGINE-14014 Starting up the JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor].
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:01.547  INFO 1 --- [ingJobExecutor]] org.camunda.bpm.engine.jobexecutor       : ENGINE-14018 JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor] starting to acquire jobs
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:02.709  INFO 1 --- [nio-4000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:02.710  INFO 1 --- [nio-4000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+[36mcamunda-app_1   |[0m 2021-01-13 15:26:02.711  INFO 1 --- [nio-4000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[32mprocess-app_1   |[0m 2021-01-13 15:26:05.593  INFO 1 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[32mprocess-app_1   |[0m 2021-01-13 15:26:05.594  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+[32mprocess-app_1   |[0m 2021-01-13 15:26:05.595  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:10.607 UTC [1] LOG:  received fast shutdown request
+[32mprocess-app_1   |[0m 2021-01-13 15:50:10.709  INFO 1 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+[36mcamunda-app_1   |[0m 2021-01-13 15:50:11.092  INFO 1 --- [extShutdownHook] org.camunda.bpm.engine.jobexecutor       : ENGINE-14015 Shutting down the JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor]
+[36mcamunda-app_1   |[0m 2021-01-13 15:50:11.094  INFO 1 --- [ingJobExecutor]] org.camunda.bpm.engine.jobexecutor       : ENGINE-14020 JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor] stopped job acquisition
+[36mcamunda-app_1   |[0m 2021-01-13 15:50:11.095  INFO 1 --- [extShutdownHook] org.camunda.bpm.engine                   : ENGINE-00007 Process Engine default closed
+[36mcamunda-app_1   |[0m 2021-01-13 15:50:11.096  INFO 1 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'camundaTaskExecutor'
+[36mcamunda-app_1   |[0m 2021-01-13 15:50:11.096  INFO 1 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+[36mcamunda-app_1   |[0m 2021-01-13 15:50:11.099  INFO 1 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.102 UTC [1] LOG:  aborting any active transactions
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.102 UTC [80] FATAL:  terminating connection due to administrator command
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.102 UTC [81] FATAL:  terminating connection due to administrator command
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.102 UTC [75] FATAL:  terminating connection due to administrator command
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.102 UTC [78] FATAL:  terminating connection due to administrator command
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.103 UTC [77] FATAL:  terminating connection due to administrator command
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.104 UTC [76] FATAL:  terminating connection due to administrator command
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.104 UTC [72] FATAL:  terminating connection due to administrator command
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.104 UTC [74] FATAL:  terminating connection due to administrator command
+[36mcamunda-app_1   |[0m 2021-01-13 15:50:11.110  INFO 1 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.113 UTC [79] FATAL:  terminating connection due to administrator command
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.116 UTC [1] LOG:  background worker "logical replication launcher" (PID 71) exited with exit code 1
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.116 UTC [73] FATAL:  terminating connection due to administrator command
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:11.117 UTC [66] LOG:  shutting down
+[33mpostgres-app_1  |[0m 2021-01-13 15:50:13.062 UTC [1] LOG:  database system is shut down
